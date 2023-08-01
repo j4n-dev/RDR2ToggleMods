@@ -2,7 +2,6 @@
 setlocal enabledelayedexpansion
 
 REM Check if the "Red Dead Redemption 2" folder exists
-REM Überprüfe, ob der Ordner "Red Dead Redemption 2" vorhanden ist
 if not exist "Red Dead Redemption 2" (
     echo Error: The "Red Dead Redemption 2" folder does not exist.
     echo Make sure this script is placed in the correct directory.
@@ -11,13 +10,11 @@ if not exist "Red Dead Redemption 2" (
 )
 
 REM Check if the "rdr2mods" folder exists
-REM Überprüfe, ob der Ordner "rdr2mods" vorhanden ist
 if exist "rdr2mods" (
     set "targetFolder=rdr2mods"
     set "sourceFolder=rdr2orig"
 ) else (
     REM Check if the "rdr2orig" folder exists
-    REM Überprüfe, ob der Ordner "rdr2orig" vorhanden ist
     if exist "rdr2orig" (
         set "targetFolder=rdr2orig"
         set "sourceFolder=rdr2mods"
@@ -30,14 +27,12 @@ if exist "rdr2mods" (
 )
 
 REM Confirm the user's decision
-REM Bestätige die Entscheidung des Benutzers
 echo.
-echo You are currently set to play Red Dead Redemption 2 with mods: %targetFolder%.
+echo You are currently set to play: %targetFolder%.
 echo.
 set /p "confirmation=Do you want to switch? (Y/N): "
 
 REM Convert the user's input to uppercase
-REM Konvertiere die Eingabe des Benutzers in Großbuchstaben
 set "confirmation=%confirmation:~0,1%"
 if /i not "%confirmation%"=="Y" (
     echo.
@@ -47,7 +42,6 @@ if /i not "%confirmation%"=="Y" (
 )
 
 REM Rename folders to toggle between modded and unmodded gameplay
-REM Umbenennen der Ordner, um zwischen Mod- und Nicht-Mod-Spiel zu wechseln
 echo.
 ren "Red Dead Redemption 2" "temp_rename_folder"
 ren "%targetFolder%" "Red Dead Redemption 2"
